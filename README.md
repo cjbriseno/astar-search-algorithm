@@ -1,4 +1,4 @@
-# Project Title
+# Pathfinder for a map
 A* search algorithm
 
 ## Description
