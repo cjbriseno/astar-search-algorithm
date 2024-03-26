@@ -11,3 +11,7 @@ This implements a A* search algorithm and finds the shortest path from a start p
 ```
 py .\user_interface.py
 ```
+or with python3
+```
+python3 user_interface.py
+```
