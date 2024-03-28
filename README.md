@@ -15,3 +15,6 @@ or with python3
 ```
 python3 user_interface.py
 ```
+
+REFERENCE:
+https://www.simplifiedpython.net/a-star-algorithm-python-tutorial/
