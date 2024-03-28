@@ -1,4 +1,4 @@
-from astar_search import Node, Problem, astar_search, heuristic
+from pathfinder import Node, Problem, astar_search, heuristic
 
 # example grid
 grid = [
