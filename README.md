@@ -9,11 +9,11 @@ This implements a A* search algorithm and finds the shortest path from a start p
 ### Executing program
 * How to run the program
 ```
-py .\user_interface.py
+py .\main.py
 ```
 or with python3
 ```
-python3 user_interface.py
+python3 main.py
 ```
 
 REFERENCE:
