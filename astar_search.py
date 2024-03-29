@@ -67,13 +67,17 @@ class Grid(Node):
                 col = self.state[1] + i[1]
                 # check if node is within grid & not #
                 if 0 <= row < len(self.grid) and 0 <= col < len(self.grid[0]) and self.grid[row][col] != '#':
-                    # new node that is availible
-                    new_child = (row, col)
-                    # 
-                    child = Grid(new_child, self, grid=self.grid)
-                    self.children.append(child)
+                        # new node that is availible
+                        new_child = (row, col)
+                        # create new grid instance. set current as parent
+                        child = Grid(new_child, self, grid=self.grid)
+                        # append NEW child node to list (children)
+                        self.children.append(child)
 
+
+# assists w/ finding start node to goal node in grid
 class A_Star:
+    # constructor
     def __init__(self, start, goal, grid):
         self.start = start
         self.goal = goal
@@ -82,21 +86,36 @@ class A_Star:
         self.visited = []
         self.priorityQueue = PriorityQueue()
 
-    def astar_search(self):
-        start_state = Grid(self.start, 0, self.start, self.goal, self.grid)
-
+    # A* search algo
+    def pathfinder(self):
+        if self.grid[self.start[0]][self.start[1]] == '#':
+            print("START STATE NOT POSSIBLE")
+            return[]
+        # new Grid instance of start state
+        start_state = Grid(self.start, None, self.start, self.goal, self.grid)
+        # keep track of node visited
         count = 0
+        # add start_state to queue (start at 0)
         self.priorityQueue.put((0, count, start_state))
+        # loop as long as path is empty & queue is not empty
         while not self.path and self.priorityQueue.qsize():
+            # get next state in queue
             possible_child = self.priorityQueue.get()[2]
+            # BASE CASE: check to see if possible_child is the goal
             if possible_child.state == self.goal:
+                # set starting state -> goal state
                 self.path = possible_child.path
                 break
+            # create children of possible_child & find path
             possible_child.create_child()
+            # append possible_child's state to visited
             self.visited.append(possible_child.state)
+            # check children of possible child
             for child in possible_child.children:
+                # if not visited
                 if child.state not in self.visited:
                     count += 1
+                    # add child to queue 
                     self.priorityQueue.put((child.x, count, child))
         if not self.path:
             print("Goal is not possible!" + str(self.goal))

@@ -15,6 +15,3 @@ or with python3
 ```
 python3 main.py
 ```
-
-REFERENCE:
-https://www.simplifiedpython.net/a-star-algorithm-python-tutorial/
